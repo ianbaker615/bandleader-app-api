@@ -1,5 +1,5 @@
 FROM python:3.7-alpine
-MAINTAINER Ian Baker
+LABEL org.opencontainers.image.authors="Ian Baker"
 
 ENV PYTHONUNBUFFERED 1
 
