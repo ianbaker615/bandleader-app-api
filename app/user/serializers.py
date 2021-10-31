@@ -3,14 +3,13 @@ from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
-  """Serializer for the users object"""
+    """Serializer for the users object"""
 
-  class Meta:
-    model = get_user_model()
-    fields = ("email", "password", "name")
-    # TODO: this wont work see fix video
-    extra_kwargs = {"password": {"write_only": True, "min_length": 5}}
+    class Meta:
+        model = get_user_model()
+        fields = ("email", "password", "name")
+        extra_kwargs = {"password": {"write_only": True, "min_length": 5}}
 
-  def create(self, validated_data):
-    """Create new user with encrypted password and return it"""
-    return get_user_model().objects.create_user(**validated_data)
+    def create(self, validated_data):
+        """Create new user with encrypted password and return it"""
+        return get_user_model().objects.create_user(**validated_data)
